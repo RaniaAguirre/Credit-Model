@@ -31,6 +31,8 @@ This folder contains MATLAB code for building a traditional credit scoring model
       - Points < 600 = 'Poor'
       - 600 <= Points < 725 = 'Standard'
       - Points > 725 = 'Good'
+     
+The points ranges for each model were added in a Excel file too. 
 
 Additionally, a Python implementation is included, which mirrors the principles and points seen in the MATLAB code.
 
