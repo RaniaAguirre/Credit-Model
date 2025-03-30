@@ -10,7 +10,6 @@ This folder contains the data files and a Jupyter notebook for cleaning the data
 ### 2. **Variable Analysis**
 This folder contains a Jupyter notebook that performs an analysis of the variables in the `train_cleaned.csv` dataset. The notebook includes the following:
 - **Heatmap**: Correlation heatmap to explore the relationships between numeric variables.
-- **Pairplot**: Visual representation of the interactions between predictor variables to understand their distributions and correlations.
 - **Violin Plots**: Plots to analyze the distribution of categorical variables with respect to the `Credit_Score` (Poor, Standard, Good).
 - **Histograms**: Histograms for numeric variables showing their distributions and how they relate to the `Credit_Score` values. This analysis helps to identify which variables are relevant for building the scoring and credit risk model.
 
