@@ -2,17 +2,17 @@
 data = readtable('train_cleaned.csv');
 data.Score_Category = categorical(data.Score_Category, {'Poor', 'Standard', 'Good'}, 'Ordinal', true);
 
-% Important columns
-cols = {'Age', 'Annual_Income', 'Num_Bank_Accounts', 'Num_Credit_Card', ...
-                 'Num_of_Loan', 'Outstanding_Debt', ...
-                 'Monthly_Balance', 'Credit_Utilization_Ratio', 'Score_Category'};
+%% Important columns
+cols = {'Credit_History_Age_Months', 'Num_Bank_Accounts', 'Num_Credit_Card', ...
+                 'Num_of_Loan', 'Outstanding_Debt', 'Delay_from_due_date', ...
+                 'Num_Credit_Inquiries', 'Score_Category'};
 
 data = data(:, cols);
 
 % Predictor variables
-predictor_vars = {'Age', 'Annual_Income', 'Num_Bank_Accounts', 'Num_Credit_Card', ...
-                 'Num_of_Loan', 'Outstanding_Debt', ...
-                 'Monthly_Balance', 'Credit_Utilization_Ratio'};
+predictor_vars = {'Credit_History_Age_Months', 'Num_Bank_Accounts', 'Num_Credit_Card', ...
+                 'Num_of_Loan', 'Outstanding_Debt', 'Delay_from_due_date', ...
+                 'Num_Credit_Inquiries'};
 
 %% Poor vs Standard Model
 data_poor_std = data(data.Score_Category ~= 'Good', :); % Only Poor and Standard
@@ -57,11 +57,11 @@ data.scores_std_good = scores_std_good;
 
 %% Distribution 1
 colors = containers.Map(...
-    {'Poor', 'Standard', 'Good'}, ...
-    {[0.8500 0.3250 0.0980], [0 0.4470 0.7410], [0.4660 0.6740 0.1880]});  % Red, Blue, Green
+    {'Poor', 'Standard'}, ...
+    {[0.8500 0.3250 0.0980], [0 0.4470 0.7410]});  % Red, Blue
 
 % Get scores by category
-classes = {'Poor', 'Standard', 'Good'};
+classes = {'Poor', 'Standard'};
 
 % Create the plot
 figure;
@@ -77,6 +77,9 @@ for i = 1:length(classes)
         'FaceAlpha', 0.6); % Transparency to see overlaps
 end
 
+% Add the threshold line at 600
+line([600 600], ylim, 'Color', 'k', 'LineStyle', '--', 'LineWidth', 2);
+
 % Set up the plot
 xlabel('Credit Score');
 ylabel('Frequency');
@@ -88,11 +91,11 @@ hold off;
 %% Distribution 2
 % Colors by category
 colors = containers.Map(...
-    {'Poor', 'Standard', 'Good'}, ...
-    {[0.8500 0.3250 0.0980], [0 0.4470 0.7410], [0.4660 0.6740 0.1880]});  % Red, Blue, Green
+    {'Standard', 'Good'}, ...
+    {[0 0.4470 0.7410], [0.4660 0.6740 0.1880]});  % Blue, Green
 
 % Get scores by category
-classes = {'Poor', 'Standard', 'Good'};
+classes = {'Standard', 'Good'};
 
 % Create the plot
 figure;
@@ -153,6 +156,10 @@ for i = 1:length(classes)
         'EdgeColor', 'none', ...
         'FaceAlpha', 0.6); % Transparency to see overlaps
 end
+
+% Add the threshold line at 600
+line([600 600], ylim, 'Color', 'k', 'LineStyle', '--', 'LineWidth', 2);
+line([725 725], ylim, 'Color', 'k', 'LineStyle', '--', 'LineWidth', 2);
 
 % Set up the plot
 xlabel('Credit Score');
