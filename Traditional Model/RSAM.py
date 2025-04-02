@@ -194,7 +194,7 @@ class RSAMScoring:
         plt.grid(True)
         plt.show()
 
-    def confusion_heatmap(self):
+    def accuracy(self):
         """Classify final points into categories."""
 
         true_labels = self.df['Score_Category'].astype('category')
@@ -220,7 +220,7 @@ scoring.calculate_poor_std_points()
 scoring.calculate_std_good_points()
 scoring.calculate_final_points()
 #scoring.plot_histograms('final_points')  # Indicate the variable you want to analyze
-#scoring.confusion_heatmap()
+#scoring.accuracy()
 print(df)
 
 
