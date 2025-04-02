@@ -110,6 +110,8 @@ This folder contains a Jupyter notebook that implements a credit risk model usin
 
 The notebook evaluates the performance of each model by calculating the **accuracy** and **AUC score**. It also generates **ROC curves** and **confusion matrices** for each model to assess their predictive power. The goal of this notebook is to implement machine learning techniques to predict credit risk and compare the performance of different models.
 
+*If you want to use another predictors make sure to change it inside the class.
+
 ---
 
 ## How to Use

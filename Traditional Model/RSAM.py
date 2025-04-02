@@ -166,6 +166,11 @@ class RSAMScoring:
                                            self.df['poor_std_points_total'],
                                            self.df['std_good_points_total'])
 
+        predicted_category = ['Poor' if points < 600 else 'Standard' if points <= 725 else 'Good'
+                              for points in self.df['final_points']]
+
+        self.df['predicted_category'] = predicted_category
+
     def plot_histograms(self, variable):
         """Generate a histogram for the specified numerical feature."""
         target = 'Credit_Score'
@@ -189,12 +194,8 @@ class RSAMScoring:
         plt.grid(True)
         plt.show()
 
-    def classify_final_points(self):
+    def confusion_heatmap(self):
         """Classify final points into categories."""
-        predicted_category = ['Poor' if points < 600 else 'Standard' if points <= 725 else 'Good'
-                              for points in self.df['final_points']]
-
-        self.df['predicted_category'] = predicted_category
 
         true_labels = self.df['Score_Category'].astype('category')
         pred_labels = pd.Categorical(self.df['predicted_category'])
@@ -218,7 +219,8 @@ scoring = RSAMScoring(df)
 scoring.calculate_poor_std_points()
 scoring.calculate_std_good_points()
 scoring.calculate_final_points()
-scoring.plot_histograms('final_points')  # Indicate the variable you want to analyze
-scoring.classify_final_points()
+#scoring.plot_histograms('final_points')  # Indicate the variable you want to analyze
+#scoring.confusion_heatmap()
+print(df)
 
 
