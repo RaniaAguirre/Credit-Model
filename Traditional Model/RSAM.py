@@ -171,6 +171,24 @@ class RSAMScoring:
 
         self.df['predicted_category'] = predicted_category
 
+    def accuracy(self):
+        """Classify final points into categories."""
+
+        true_labels = self.df['Score_Category'].astype('category')
+        pred_labels = pd.Categorical(self.df['predicted_category'])
+
+        accuracy = accuracy_score(true_labels, pred_labels)
+        print(f'Accuracy: {accuracy * 100:.2f}%')
+
+        cm = confusion_matrix(true_labels, pred_labels)
+        plt.figure(figsize=(6, 6))
+        sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=['Poor', 'Standard', 'Good'],
+                    yticklabels=['Poor', 'Standard', 'Good'])
+        plt.title('Confusion Matrix: True vs Predicted Categories')
+        plt.xlabel('Predicted')
+        plt.ylabel('True')
+        plt.show()
+
     def plot_histograms(self, variable):
         """Generate a histogram for the specified numerical feature."""
         target = 'Credit_Score'
@@ -194,24 +212,6 @@ class RSAMScoring:
         plt.grid(True)
         plt.show()
 
-    def accuracy(self):
-        """Classify final points into categories."""
-
-        true_labels = self.df['Score_Category'].astype('category')
-        pred_labels = pd.Categorical(self.df['predicted_category'])
-
-        accuracy = accuracy_score(true_labels, pred_labels)
-        print(f'Accuracy: {accuracy * 100:.2f}%')
-
-        cm = confusion_matrix(true_labels, pred_labels)
-        plt.figure(figsize=(6, 6))
-        sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=['Poor', 'Standard', 'Good'],
-                    yticklabels=['Poor', 'Standard', 'Good'])
-        plt.title('Confusion Matrix: True vs Predicted Categories')
-        plt.xlabel('Predicted')
-        plt.ylabel('True')
-        plt.show()
-
 
 # Example usage:
 df = pd.read_csv('train_cleaned.csv') # Change for your data set
@@ -219,8 +219,8 @@ scoring = RSAMScoring(df)
 scoring.calculate_poor_std_points()
 scoring.calculate_std_good_points()
 scoring.calculate_final_points()
-#scoring.plot_histograms('final_points')  # Indicate the variable you want to analyze
 #scoring.accuracy()
+#scoring.plot_histograms('final_points')  # Indicate the variable you want to analyze
 print(df)
 
 
