@@ -221,6 +221,6 @@ scoring.calculate_std_good_points()
 scoring.calculate_final_points()
 #scoring.accuracy()
 #scoring.plot_histograms('final_points')  # Indicate the variable you want to analyze
-print(df)
+df.to_csv('train_with_points.csv', index=False)
 
 
