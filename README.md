@@ -104,13 +104,16 @@ Generates a histogram showing variable distribution by credit score category.
 
 ### 4. **Credit Risk Model**
 This folder contains a Jupyter notebook that implements a credit risk model using three machine learning algorithms:
-- **Logistic Regression**
-- **Random Forest**
-- **XGBoost**
+- Logistic Regression (without data preprocessing as a benchmark)
+- MLPClassifier
+- Random Forest
+- XGBoost
 
-The notebook evaluates the performance of each model by calculating the **accuracy** and **AUC score**. It also generates **ROC curves** and **confusion matrices** for each model to assess their predictive power. The goal of this notebook is to implement machine learning techniques to predict credit risk and compare the performance of different models.
+The notebook evaluates the performance of each model by calculating accuracy and AUC score. It also generates ROC curves and confusion matrices for each model to assess their predictive power. The goal of this notebook is to implement machine learning techniques to predict credit risk and compare the performance of different models.
 
-*If you want to use another predictors make sure to change it inside the class.
+As a benchmark, we first use Logistic Regression without any data preprocessing. Then, the three models mentioned above are compared to see which one performs better, also comparing the results with the accuracy obtained in the traditional model (e.g., FICO model).
+
+*If you want to use other predictors, make sure to change them within the class.
 
 ---
 
