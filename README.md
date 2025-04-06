@@ -111,7 +111,7 @@ This folder contains a Jupyter notebook that implements a credit risk model usin
 
 The notebook evaluates the performance of each model by calculating accuracy and AUC score. It also generates ROC curves and confusion matrices for each model to assess their predictive power. The goal of this notebook is to implement machine learning techniques to predict credit risk and compare the performance of different models.
 
-As a benchmark, we first use Logistic Regression without any data preprocessing. Then, the three models mentioned above are compared to see which one performs better, also comparing the results with the accuracy obtained in the traditional model (e.g., FICO model).
+As a benchmark, we first use Logistic Regression without any data preprocessing. Then, the three models mentioned above are compared to see which one performs better, also comparing the results with the accuracy obtained in the RSAM model.
 
 *If you want to use other predictors, make sure to change them within the class.
 
